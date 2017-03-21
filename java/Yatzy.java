@@ -1,26 +1,5 @@
 public class Yatzy {
 
-    public static int chance(int d1, int d2, int d3, int d4, int d5)
-    {
-        int total = 0;
-        total += d1;
-        total += d2;
-        total += d3;
-        total += d4;
-        total += d5;
-        return total;
-    }
-
-    public static int yatzy(int... dice)
-    {
-        int[] counts = new int[6];
-        for (int die : dice)
-            counts[die-1]++;
-        for (int i = 0; i != 6; i++)
-            if (counts[i] == 5)
-                return 50;
-        return 0;
-    }
 
     public static int ones(int d1, int d2, int d3, int d4, int d5) {
         int sum = 0;
@@ -56,7 +35,7 @@ public class Yatzy {
     }
 
     protected int[] dice;
-    public Yatzy(int d1, int d2, int d3, int d4, int _5)
+    Yatzy(int d1, int d2, int d3, int d4, int _5)
     {
         dice = new int[5];
         dice[0] = d1;
@@ -66,7 +45,11 @@ public class Yatzy {
         dice[4] = _5;
     }
 
-    public int fours()
+    Yatzy(int[] dice) {
+		this.dice = dice;
+	}
+
+	public int fours()
     {
         int sum;    
         sum = 0;
@@ -235,6 +218,10 @@ public class Yatzy {
         else
             return 0;
     }
+
+	public int[] getDices() {
+		return dice;
+	}
 }
 
 

@@ -1,4 +1,8 @@
 import org.junit.*;
+
+import evaluators.ChanceStrategy;
+import evaluators.YatzyStrategy;
+
 import static org.junit.Assert.*;
 
 public class YatzyTest {
@@ -6,17 +10,17 @@ public class YatzyTest {
     @Test
     public void chance_scores_sum_of_all_dice() {
         int expected = 15;
-        int actual = Yatzy.chance(2,3,4,5,1);
+        int actual = new ChanceStrategy().applyOn(2,3,4,5,1);
         assertEquals(expected, actual);
-        assertEquals(16, Yatzy.chance(3,3,4,5,1));
+        assertEquals(16, new ChanceStrategy().applyOn(3,3,4,5,1));
     }
 
     @Test public void yatzy_scores_50() {
         int expected = 50;
-        int actual = Yatzy.yatzy(4,4,4,4,4);
+        int actual = new YatzyStrategy().applyOn(4,4,4,4,4);
         assertEquals(expected, actual);
-        assertEquals(50, Yatzy.yatzy(6,6,6,6,6));
-        assertEquals(0, Yatzy.yatzy(6,6,6,6,3));
+        assertEquals(50, new YatzyStrategy().applyOn(6,6,6,6,6));
+        assertEquals(0, new YatzyStrategy().applyOn(6,6,6,6,3));
     }
 
     @Test public void test_1s() {
@@ -41,23 +45,23 @@ public class YatzyTest {
     @Test
     public void fours_test() 
     {
-        assertEquals(12, new Yatzy(4,4,4,5,5).fours());
-        assertEquals(8, new Yatzy(4,4,5,5,5).fours());
-        assertEquals(4, new Yatzy(4,5,5,5,5).fours());
+        assertEquals(12, YatzyBuilder.with(4,4,4,5,5).build().fours());
+        assertEquals(8, YatzyBuilder.with(4,4,5,5,5).build().fours());
+        assertEquals(4, YatzyBuilder.with(4,5,5,5,5).build().fours());
     }
 
     @Test
     public void fives() {
-        assertEquals(10, new Yatzy(4,4,4,5,5).fives());
-        assertEquals(15, new Yatzy(4,4,5,5,5).fives());
-        assertEquals(20, new Yatzy(4,5,5,5,5).fives());
+        assertEquals(10, YatzyBuilder.with(4,4,4,5,5).build().fives());
+        assertEquals(15, YatzyBuilder.with(4,4,5,5,5).build().fives());
+        assertEquals(20, YatzyBuilder.with(4,5,5,5,5).build().fives());
     }
 
     @Test
     public void sixes_test() {
-        assertEquals(0, new Yatzy(4,4,4,5,5).sixes());
-        assertEquals(6, new Yatzy(4,4,6,5,5).sixes());
-        assertEquals(18, new Yatzy(6,5,6,6,5).sixes());
+        assertEquals(0, YatzyBuilder.with(4,4,4,5,5).build().sixes());
+        assertEquals(6, YatzyBuilder.with(4,4,6,5,5).build().sixes());
+        assertEquals(18, YatzyBuilder.with(6,5,6,6,5).build().sixes());
     }
 
     @Test
