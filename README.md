@@ -129,5 +129,5 @@ Voyons maintenant ce que dit la *bible* au sujet de ce pattern :
 
 *The builder pattern is a design pattern that allows for the step-by-step creation of complex objects using the correct sequence of actions. The construction is controlled by a director object that only needs to know the type of object it is to create.*
 
-image
+[Builder Pattern diagramm](https://github.com/cyrilhouillon/Yatzy-Refactoring-Kata/blob/master/img/Builder.png?raw=true "Builder Pattern diagramm")
 
